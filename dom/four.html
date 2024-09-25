@@ -11,7 +11,39 @@
     </ul>
 </body>
 <script>
+    //this is not a good way because it will treverse throughout the tree
+    function addtxt(lang) {
+        const li = document.createElement('li')
+        li.innerHTML= `${lang}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addtxt('python')
+    addtxt('java')
+ 
+    //this is the optimise way as it does traverse the tree
+    function opwayaddtxt(lang) {
         const li= document.createElement('li')
-        li.appendChild('')
+        li.appendChild(document.createTextNode(lang))
+        document.querySelector('.language').appendChild(li)
+    }
+
+    opwayaddtxt('golang')
+
+    
+    //Edit
+    const secondLang = document.querySelector("li:nth-child(2)")
+    console.log(secondLang);
+    //secondLang.innerHTML = "Mojo"
+    const newli = document.createElement('li')
+    newli.textContent = "Mojo"
+    secondLang.replaceWith(newli)
+
+    //edit
+    const firstLang = document.querySelector("li:first-child")
+    firstLang.outerHTML = '<li>TypeScript</li>'
+
+    //remove
+    const lastLang = document.querySelector('li:last-child')
+    lastLang.remove()
 </script>
 </html>
